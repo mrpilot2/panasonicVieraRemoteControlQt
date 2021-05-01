@@ -1,5 +1,7 @@
 #include "mainwidget.hpp"
 
+#include <QAction>
+
 #include <aide/hierarchicalid.hpp>
 
 #include "ui_mainwidget.h"
