@@ -15,9 +15,14 @@ MainWidgetController::MainWidgetController(
     , logger{std::move(loggerInterface)}
 {}
 
-void viera::gui::MainWidgetController::onUserWantsToConnectToIpAddress()
+void MainWidgetController::onUserWantsToConnectToIpAddress()
 {
     logger->info("User requests to connect to TV");
 
     connectToTv.receiveTvInformation();
+}
+
+void MainWidgetController::onUserClickedAKey(const QString& key)
+{
+    connectToTv.sendSelectedKey(key);
 }

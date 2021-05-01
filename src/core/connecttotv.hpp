@@ -6,6 +6,8 @@
 
 #include <QtNetwork/QNetworkAccessManager>
 
+#include "vieraprotocol.hpp"
+
 namespace aide
 {
     class LoggerInterface;
@@ -21,11 +23,15 @@ namespace viera::core
 
         void receiveTvInformation();
 
+        void sendSelectedKey(const QString& key);
+
     private slots:
         void networkRequestIsFinished(QNetworkReply* reply);
 
     private:
         aide::LoggerPtr logger;
+
+        VieraProtocol protocol;
 
         QNetworkAccessManager networkAccessManager;
     };

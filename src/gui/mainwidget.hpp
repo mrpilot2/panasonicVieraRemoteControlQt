@@ -4,6 +4,7 @@
 
 #include <memory>
 
+#include <QSignalMapper>
 #include <QWidget>
 
 #include <aide/actionregistryinterface.hpp>
@@ -41,6 +42,8 @@ namespace viera::gui
         std::unique_ptr<Ui::MainWidget> ui;
 
         std::shared_ptr<QAction> actionConnect;
+
+        QSignalMapper signalMapper;
     };
 } // namespace viera::gui
 

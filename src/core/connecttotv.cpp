@@ -1,30 +1,43 @@
 
 #include "connecttotv.hpp"
 
+#include <utility>
+
 #include <QNetworkReply>
 #include <QXmlSimpleReader>
 
 #include <aide/loggerinterface.hpp>
 
 using viera::core::ConnectToTv;
+using viera::core::VieraProtocol;
 
 ConnectToTv::ConnectToTv(aide::LoggerPtr loggerInterface)
-    : logger{loggerInterface}
-{}
+    : logger{std::move(loggerInterface)}
+{
+    VieraProtocol::setIpAddress("10.0.0.96");
+}
 
 void ConnectToTv::receiveTvInformation()
 {
-    constexpr auto connectionPort{55000};
-    constexpr auto tvIPAddress{"10.0.0.96"};
-    networkAccessManager.connectToHost(tvIPAddress, connectionPort);
+    networkAccessManager.connectToHost(
+        QString::fromStdString(VieraProtocol::getIpAddress()),
+        VieraProtocol::getPort());
 
-    QNetworkRequest request(QUrl(QString::fromStdString(
-        "http://" + std::string(tvIPAddress) + ":" +
-        std::to_string(connectionPort) + "/nrc/ddd.xml")));
-    auto* reply = networkAccessManager.get(request);
+    QNetworkRequest request(VieraProtocol::createBasicTVInformationRequest());
+    [[maybe_unused]] auto* reply = networkAccessManager.get(request);
 
     connect(&networkAccessManager, &QNetworkAccessManager::finished, this,
             &ConnectToTv::networkRequestIsFinished);
+}
+
+void ConnectToTv::sendSelectedKey(const QString& key)
+{
+    auto [request, body] = VieraProtocol::createSendKeyRequest(key);
+
+    logger->trace("Prepared body to send {}", body);
+
+    [[maybe_unused]] auto* reply =
+        networkAccessManager.post(request, QByteArray(body.c_str()));
 }
 
 void ConnectToTv::networkRequestIsFinished(QNetworkReply* reply)

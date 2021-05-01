@@ -26,6 +26,8 @@ namespace viera::gui
     public slots:
         void onUserWantsToConnectToIpAddress();
 
+        void onUserClickedAKey(const QString& key);
+
     private:
         viera::core::ConnectToTv& connectToTv;
 
