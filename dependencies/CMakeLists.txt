@@ -11,4 +11,3 @@ if (NOT TARGET Aide::AideApplication)
 else()
     set_target_properties(Aide::AideApplication PROPERTIES IMPORTED_GLOBAL TRUE)
 endif()
-

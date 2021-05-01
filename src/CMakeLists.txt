@@ -1,3 +1,5 @@
+add_subdirectory(gui)
+
 add_executable(vieraRemoteControlQt)
 
 target_sources(vieraRemoteControlQt
@@ -6,5 +8,6 @@ target_sources(vieraRemoteControlQt
 
 target_link_libraries(vieraRemoteControlQt
     PRIVATE
-        Aide::AideApplication
+    Aide::AideApplication
+    vieraRemoteGui
 )
