@@ -6,20 +6,12 @@ include(StandardProjectSettings)
 standard_project_settings()
 
 project(
-    aide_tests
+    vieraRemoteControlQt_tests
     LANGUAGES CXX
     VERSION 0.1.0
 )
 
 include(dependencies/CMakeLists.txt)
-
-# In standalone mode we need to find our library
-if (NOT TARGET Aide::AideApplication)
-    find_package(Aide CONFIG REQUIRED)
-    set(TEST_AGAINST_INSTALLED TRUE)
-else ()
-    set(TEST_AGAINST_INSTALLED FALSE)
-endif ()
 
 # target does not exist in standalone mode, only when built from top-level
 if (NOT TARGET project_sanitizers)

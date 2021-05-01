@@ -13,13 +13,13 @@ add_library(catch_main OBJECT catch_main.cpp)
 target_link_libraries(catch_main PUBLIC CONAN_PKG::catch2)
 target_compile_features(catch_main PUBLIC cxx_std_11)
 
-add_executable(ut.aide)
+add_executable(ut.vieraRemoteControlQt)
 
-target_sources(ut.aide
+target_sources(ut.vieraRemoteControlQt
     PRIVATE $<TARGET_OBJECTS:catch_main>)
 
 target_link_libraries(
-    ut.aide
+    ut.vieraRemoteControlQt
     PRIVATE catch_main
 )
 
@@ -27,7 +27,7 @@ enable_testing()
 
 if (UNIT_TESTS_RUN_ON_CI)
   catch_discover_tests(
-      ut.aide
+      ut.vieraRemoteControlQt
       REPORTER
       junit
       OUTPUT_DIR
@@ -36,5 +36,5 @@ if (UNIT_TESTS_RUN_ON_CI)
       .xml
   )
 else ()
-  catch_discover_tests(ut.aide REPORTER console)
+  catch_discover_tests(ut.vieraRemoteControlQt REPORTER console)
 endif ()
