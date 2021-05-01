@@ -12,6 +12,7 @@ MainWidget::MainWidget(QWidget* parent)
 {
     ui->setupUi(this);
 }
+
 MainWidget::~MainWidget() = default;
 
 void MainWidget::setController(

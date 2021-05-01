@@ -6,6 +6,8 @@
 
 #include <QObject>
 
+#include "../core/connecttotv.hpp"
+
 namespace aide
 {
     class LoggerInterface;
@@ -18,12 +20,15 @@ namespace viera::gui
     {
         Q_OBJECT
     public:
-        explicit MainWidgetController(aide::LoggerPtr loggerInterface);
+        explicit MainWidgetController(viera::core::ConnectToTv& connectUseCase,
+                                      aide::LoggerPtr loggerInterface);
 
     public slots:
         void onUserWantsToConnectToIpAddress();
 
     private:
+        viera::core::ConnectToTv& connectToTv;
+
         aide::LoggerPtr logger;
     };
 

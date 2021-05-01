@@ -2,6 +2,7 @@
 
 #include <aide/application.hpp>
 
+#include "core/connecttotv.hpp"
 #include "mainwidget.hpp"
 
 using aide::Application;
@@ -16,8 +17,10 @@ int main(int argc, char* argv[])
 
     auto mainWidget = std::make_shared<viera::gui::MainWidget>();
 
-    auto mainController =
-        std::make_shared<viera::gui::MainWidgetController>(app.logger());
+    auto connectUseCase = viera::core::ConnectToTv(app.logger());
+
+    auto mainController = std::make_shared<viera::gui::MainWidgetController>(
+        connectUseCase, app.logger());
 
     mainWidget->setController(mainController, app.actionRegistry());
     app.mainWindow()->setCentralWidget(mainWidget.get());

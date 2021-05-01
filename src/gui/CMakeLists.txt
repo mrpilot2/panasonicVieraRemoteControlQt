@@ -10,7 +10,8 @@ target_sources(vieraRemoteGui
     PRIVATE mainwidget.cpp mainwidgetcontroller.cpp
     )
 
-target_link_libraries(vieraRemoteGui PRIVATE Aide::AideLogger Qt5::Widgets)
+target_link_libraries(vieraRemoteGui PRIVATE vieraRemoteCore
+    Aide::AideLogger Qt5::Widgets)
 
 target_include_directories(vieraRemoteGui PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
