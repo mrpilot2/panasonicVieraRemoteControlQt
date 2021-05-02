@@ -9,4 +9,6 @@ target_sources(vieraRemoteCore
 
 target_link_libraries(vieraRemoteCore PUBLIC Qt5::Network PRIVATE Qt5::Xml Aide::AideLogger)
 
+target_include_directories(vieraRemoteCore PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+
 target_compile_features(vieraRemoteCore PUBLIC cxx_std_17)
