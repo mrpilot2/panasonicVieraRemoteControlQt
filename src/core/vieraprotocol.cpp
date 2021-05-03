@@ -44,8 +44,7 @@ std::tuple<QNetworkRequest, std::string> VieraProtocol::createSendKeyRequest(
                       R"(text/xml;charset="utf-8")");
     request.setRawHeader(
         "SOAPACTION",
-        QByteArray(std::string(std::string("\"") + std::string(COMMAND_URN) +
-                               "#X_SendKey\"")
+        QByteArray(std::string(std::string("\"") + COMMAND_URN + "#X_SendKey\"")
                        .c_str()));
 
     const std::string body{R"(<?xml version="1.0" encoding="utf-8"?>
