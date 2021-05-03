@@ -24,6 +24,15 @@ target_link_libraries(
     vieraRemoteCore
 )
 
+if (APPLE)
+  add_custom_command(
+      TARGET ut.vieraRemoteControlQt
+      POST_BUILD
+      COMMAND ${CMAKE_INSTALL_NAME_TOOL} -add_rpath "${Qt5_DIR}/../../"
+      $<TARGET_FILE:ut.vieraRemoteControlQt>
+  )
+endif ()
+
 enable_testing()
 
 if (UNIT_TESTS_RUN_ON_CI)
