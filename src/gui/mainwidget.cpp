@@ -56,6 +56,7 @@ void MainWidget::registerActions(
         {ui->buttonExit, "NRC_CANCEL-ONOFF"},
         {ui->buttonApps, "NRC_APPS-ONOFF"},
         {ui->buttonHome, "NRC_HOME-ONOFF"},
+        {ui->buttonGuide, "NRC_EPG-ONOFF"},
         {ui->buttonOK, "NRC_ENTER-ONOFF"},
         {ui->buttonUp, "NRC_UP-ONOFF"},
         {ui->buttonLeft, "NRC_LEFT-ONOFF"},
