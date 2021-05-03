@@ -21,7 +21,7 @@ void ConnectToTv::receiveTvInformation()
 {
     networkAccessManager.connectToHost(
         QString::fromStdString(VieraProtocol::getIpAddress()),
-        VieraProtocol::getPort());
+        static_cast<quint16>(VieraProtocol::getPort()));
 
     QNetworkRequest request(VieraProtocol::createBasicTVInformationRequest());
     [[maybe_unused]] auto* reply = networkAccessManager.get(request);

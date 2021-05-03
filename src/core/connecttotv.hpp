@@ -31,8 +31,6 @@ namespace viera::core
     private:
         aide::LoggerPtr logger;
 
-        VieraProtocol protocol;
-
         QNetworkAccessManager networkAccessManager;
     };
 } // namespace viera::core
